@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 50px;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta name="format-detection" content="telephone=no" />
+    <title>title</title>
+    <script src="./index.js?8"></script>
+    <script
+      src="https://cdn.ravenjs.com/3.26.2/raven.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+
+  <body>
+    <button onclick="location.reload()">重载</button>
+    <script>
+      Raven.config(
+        'https://7c3d7a9797704288a8518cd39e1a3ab9@sentry.julanling.com/82'
+      ).install()
+      let sc = document.createElement('script')
+      sc.setAttribute(
+        'src',
+        'https://cdn.julanling.com/h5/libs/vconsole.min.js'
+      )
+      document.querySelector('body').appendChild(sc)
+      sc.onload = () => {
+        try {
+          // TODO
+          var vConsole = new VConsole()
+          //   console.log(window)
+          dsBridge.call('getTokenToH5', res => {
+            console.log(res)
+          })
+          setInterval(() => {
+            dsBridge.call('getTokenToH5', res => {
+              //   console.log(res)
+            })
+            dsBridge.call(
+              'setCalendarNotice',
+              {
+                title: '安心省钱秒杀开抢提醒',
+                desc: '你关注的商品即将开抢，请前往“安心省钱”抢购~',
+                location: '安心记加班',
+                startTime: new Date().getTime(),
+                endTime: new Date().getTime() + 60 * 60 * 1000
+              },
+              res => {}
+            )
+          }, 1000)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    </script>
+  </body>
+</html>

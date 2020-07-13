@@ -23,8 +23,6 @@
     "url": "https://github.com/wendux/DSBridge-Android/issues",
     "url2": "https://github.com/wendux/DSBridge-IOS/issues"
   },
-  "devDependencies": {
-  },
-  "dependencies": {
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
